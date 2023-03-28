@@ -298,6 +298,7 @@ _import_structure = {
     "models.git": ["GIT_PRETRAINED_CONFIG_ARCHIVE_MAP", "GitConfig", "GitProcessor", "GitVisionConfig"],
     "models.glpn": ["GLPN_PRETRAINED_CONFIG_ARCHIVE_MAP", "GLPNConfig"],
     "models.gpt2": ["GPT2_PRETRAINED_CONFIG_ARCHIVE_MAP", "GPT2Config", "GPT2Tokenizer"],
+    "models.sparsegpt": ["SPARSEGPT_PRETRAINED_CONFIG_ARCHIVE_MAP", "SparseGPTConfig"],
     "models.gpt_neo": ["GPT_NEO_PRETRAINED_CONFIG_ARCHIVE_MAP", "GPTNeoConfig"],
     "models.gpt_neox": ["GPT_NEOX_PRETRAINED_CONFIG_ARCHIVE_MAP", "GPTNeoXConfig"],
     "models.gpt_neox_japanese": ["GPT_NEOX_JAPANESE_PRETRAINED_CONFIG_ARCHIVE_MAP", "GPTNeoXJapaneseConfig"],
@@ -1625,6 +1626,18 @@ else:
             "GPT2Model",
             "GPT2PreTrainedModel",
             "load_tf_weights_in_gpt2",
+        ]
+    )
+    _import_structure["models.sparsegpt"].extend(
+        [
+            "SPARSEGPT_PRETRAINED_MODEL_ARCHIVE_LIST",
+            "SparseGPTDoubleHeadsModel",
+            "SparseGPTForSequenceClassification",
+            "SparseGPTForTokenClassification",
+            "SparseGPTLMHeadModel",
+            "SparseGPTModel",
+            "SparseGPTPreTrainedModel",
+            "load_tf_weights_in_sparsegpt",
         ]
     )
     _import_structure["models.gpt_neo"].extend(
@@ -3041,6 +3054,17 @@ else:
             "TFGPT2PreTrainedModel",
         ]
     )
+    _import_structure["models.sparsegpt"].extend(
+        [
+            "TF_SPARSEGPT_PRETRAINED_MODEL_ARCHIVE_LIST",
+            "TFSparseGPTDoubleHeadsModel",
+            "TFSparseGPTForSequenceClassification",
+            "TFSparseGPTLMHeadModel",
+            "TFSparseGPTMainLayer",
+            "TFSparseGPTModel",
+            "TFSparseGPTPreTrainedModel",
+        ]
+    )
     _import_structure["models.gptj"].extend(
         [
             "TFGPTJForCausalLM",
@@ -3563,6 +3587,7 @@ else:
     )
     _import_structure["models.encoder_decoder"].append("FlaxEncoderDecoderModel")
     _import_structure["models.gpt2"].extend(["FlaxGPT2LMHeadModel", "FlaxGPT2Model", "FlaxGPT2PreTrainedModel"])
+    _import_structure["models.sparsegpt"].extend(["FlaxSparseGPTLMHeadModel", "FlaxSparseGPTModel", "FlaxSparseGPTPreTrainedModel"])
     _import_structure["models.gpt_neo"].extend(
         ["FlaxGPTNeoForCausalLM", "FlaxGPTNeoModel", "FlaxGPTNeoPreTrainedModel"]
     )
@@ -3915,6 +3940,7 @@ if TYPE_CHECKING:
     from .models.git import GIT_PRETRAINED_CONFIG_ARCHIVE_MAP, GitConfig, GitProcessor, GitVisionConfig
     from .models.glpn import GLPN_PRETRAINED_CONFIG_ARCHIVE_MAP, GLPNConfig
     from .models.gpt2 import GPT2_PRETRAINED_CONFIG_ARCHIVE_MAP, GPT2Config, GPT2Tokenizer
+    from .models.sparsegpt import SPARSEGPT_PRETRAINED_CONFIG_ARCHIVE_MAP, SparseGPTConfig
     from .models.gpt_neo import GPT_NEO_PRETRAINED_CONFIG_ARCHIVE_MAP, GPTNeoConfig
     from .models.gpt_neox import GPT_NEOX_PRETRAINED_CONFIG_ARCHIVE_MAP, GPTNeoXConfig
     from .models.gpt_neox_japanese import GPT_NEOX_JAPANESE_PRETRAINED_CONFIG_ARCHIVE_MAP, GPTNeoXJapaneseConfig
@@ -5051,6 +5077,16 @@ if TYPE_CHECKING:
             GPT2Model,
             GPT2PreTrainedModel,
             load_tf_weights_in_gpt2,
+        )
+        from .models.sparsegpt import (
+            SPARSEGPT_PRETRAINED_MODEL_ARCHIVE_LIST,
+            SparseGPTDoubleHeadsModel,
+            SparseGPTForSequenceClassification,
+            SparseGPTForTokenClassification,
+            SparseGPTLMHeadModel,
+            SparseGPTModel,
+            SparseGPTPreTrainedModel,
+            load_tf_weights_in_sparsegpt,
         )
         from .models.gpt_neo import (
             GPT_NEO_PRETRAINED_MODEL_ARCHIVE_LIST,
@@ -6212,6 +6248,15 @@ if TYPE_CHECKING:
             TFGPT2Model,
             TFGPT2PreTrainedModel,
         )
+        from .models.sparsegpt import (
+            TF_SPARSEGPT_PRETRAINED_MODEL_ARCHIVE_LIST,
+            TFSparseGPTDoubleHeadsModel,
+            TFSparseGPTForSequenceClassification,
+            TFSparseGPTLMHeadModel,
+            TFSparseGPTMainLayer,
+            TFSparseGPTModel,
+            TFSparseGPTPreTrainedModel,
+        )
         from .models.gptj import (
             TFGPTJForCausalLM,
             TFGPTJForQuestionAnswering,
@@ -6612,6 +6657,7 @@ if TYPE_CHECKING:
         )
         from .models.encoder_decoder import FlaxEncoderDecoderModel
         from .models.gpt2 import FlaxGPT2LMHeadModel, FlaxGPT2Model, FlaxGPT2PreTrainedModel
+        from .models.sparsegpt import FlaxSparseGPTLMHeadModel, FlaxSparseGPTModel, FlaxSparseGPTPreTrainedModel
         from .models.gpt_neo import FlaxGPTNeoForCausalLM, FlaxGPTNeoModel, FlaxGPTNeoPreTrainedModel
         from .models.gptj import FlaxGPTJForCausalLM, FlaxGPTJModel, FlaxGPTJPreTrainedModel
         from .models.longt5 import FlaxLongT5ForConditionalGeneration, FlaxLongT5Model, FlaxLongT5PreTrainedModel

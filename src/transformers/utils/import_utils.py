@@ -1123,8 +1123,11 @@ class _LazyModule(ModuleType):
 
     def _get_module(self, module_name: str):
         try:
+            import traceback
             return importlib.import_module("." + module_name, self.__name__)
         except Exception as e:
+            print(traceback.format_exc())
+            exit(0)
             raise RuntimeError(
                 f"Failed to import {self.__name__}.{module_name} because of the following error (look up to see its"
                 f" traceback):\n{e}"
